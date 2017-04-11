@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="arm64-v8a,armeabi-v7a,armeabi"
+    api-level="25"
+    density="xhdpi"
+    format="8"
+    plugin-version="2.2.2"
+    timestamp="261397927662723"
+    token="8046005925978786247"
+    verifier="FULL_BUILD_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="663" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="137" />
+    <task
+        name="verifier"
+        duration="15" />
+
+    <artifact
+        location="/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
+
+    <build
+        timestamp="261397927662723"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/outputs/apk/app-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

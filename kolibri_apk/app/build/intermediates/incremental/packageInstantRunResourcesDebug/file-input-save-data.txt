@@ -1,0 +1,36 @@
+#Internal package file, do not edit.
+#Fri Jan 13 12:21:13 PST 2017
+2.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_
+5.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_/res/raw/kolibri.pex
+5.set=ANDROID_RESOURCE
+3.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_
+6.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_/resources.arsc
+2.set=ANDROID_RESOURCE
+10.set=ASSET
+10.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/assets/debug/json2.js
+4.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_
+7.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_/res/layout/activity_launching.xml
+7.set=ANDROID_RESOURCE
+count=11
+0.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/assets/debug/android.js
+5.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_
+8.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_/res/drawable/script_logo_48.png
+4.set=ANDROID_RESOURCE
+6.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_
+1.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_/res/raw/python_extras_27.zip
+9.set=ANDROID_RESOURCE
+9.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_/AndroidManifest.xml
+10.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/assets/debug
+1.set=ANDROID_RESOURCE
+7.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_
+2.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_/res/drawable/stat_sys_warning.png
+6.set=ANDROID_RESOURCE
+0.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/assets/debug
+8.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_
+3.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_/res/raw/python_27.zip
+3.set=ANDROID_RESOURCE
+1.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_
+9.base=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_
+4.file=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/res/resources-debug.ap_/res/drawable/icon.png
+8.set=ANDROID_RESOURCE
+0.set=ASSET
