@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/src/main/jniLibs"><file name="armeabi/libcom_googlecode_android_scripting_Exec.so" path="/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/src/main/jniLibs/armeabi/libcom_googlecode_android_scripting_Exec.so"/></source></dataSet><dataSet config="debug"><source path="/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/src/debug/jniLibs"/></dataSet></merger>

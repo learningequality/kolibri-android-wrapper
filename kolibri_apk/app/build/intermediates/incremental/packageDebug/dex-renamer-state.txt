@@ -1,7 +1,0 @@
-#Fri Jan 13 12:21:25 PST 2017
-base.0=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_8ab1836e7eec8efa8ece6aecb2093f51633ed2f6
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_8da1ec07d24a62bc57ac13976176cef0e7fa29d8/classes.dex
-base.1=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_8da1ec07d24a62bc57ac13976176cef0e7fa29d8
-file.0=/Users/Eli/Desktop/Kolibri_Android/kolibri27/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_8ab1836e7eec8efa8ece6aecb2093f51633ed2f6/classes.dex
