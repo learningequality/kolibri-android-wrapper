@@ -6,3 +6,7 @@ RUN build_python.sh
 
 COPY /python-android/python_27.zip kolibri_apk/app/src/main/res/raw/
 COPY /python-android/python_extras_27.zip kolibri_apk/app/src/main/res/raw/
+
+# build the apk via Gradle
+WORKDIR /kolibri_apk
+RUN gradlew assembleDebug
