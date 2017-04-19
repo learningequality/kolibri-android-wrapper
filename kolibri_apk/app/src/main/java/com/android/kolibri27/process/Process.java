@@ -37,6 +37,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,9 +142,36 @@ public class Process {
         mIn = new StreamGobbler(new FileInputStream(mFd), mLog, DEFAULT_BUFFER_SIZE);
         mStartTime = System.currentTimeMillis();
 
+        // only run the following code in Kolibri debugging mode. It will print the Kolibri server output to Logcat.
+        if(GlobalConstants.IS_KOLIBRI_DEBUGGING) {
+            Log.w(GlobalConstants.LOG_TAG, "**PYTHON-COMMAND** :: " + binaryPath);
+            Log.w(GlobalConstants.LOG_TAG, "**KOLIBRI-ARGS** :: " + Arrays.toString(argumentsArray));
+            Log.w(GlobalConstants.LOG_TAG, "**ENV-ARGS** :: " + Arrays.toString(getEnvironmentArray()));
+            Log.w(GlobalConstants.LOG_TAG, "**WORKING-DIR** :: " + getWorkingDirectory());
+            Log.w(GlobalConstants.LOG_TAG, "**PID** :: " + Arrays.toString(pid));
+
+            new Thread(new Runnable() {
+                public void run() {
+                    if(GlobalConstants.IS_KOLIBRI_DEBUGGING) {
+                        byte[] buff = new byte[DEFAULT_BUFFER_SIZE];
+                        int read;
+                        try {
+                            while ((read = mIn.read(buff)) != -1) {
+                                Log.w(GlobalConstants.LOG_TAG, "**output-from-kolibri** :: " + new String(buff, 0, read));
+                            }
+                        } catch (IOException e) {
+                            Log.e(GlobalConstants.LOG_TAG, "error-when-read-kolibri-output: " + e.getMessage());
+                        }
+                    }
+                }
+            }).start();
+        }
+
         new Thread(new Runnable() {
             public void run() {
+                Log.e(GlobalConstants.LOG_TAG, "WWWWTTTFFF--111"); // cannot get the python exit code. why !?
                 returnValue = Exec.waitFor(mPid.get());
+                Log.e(GlobalConstants.LOG_TAG, "WWWWTTTFFF--222");
                 mEndTime = System.currentTimeMillis();
                 int pid = mPid.getAndSet(PID_INIT_VALUE);
                 //pass python exit code to main activity via singlton GlobalValues(sharepreference)
@@ -152,7 +180,7 @@ public class Process {
                     GlobalValues gv = GlobalValues.getInstance();
                     gv.setPythonExitCode(returnValue, kolibri_command);
                 }
-                Log.d(GlobalConstants.LOG_TAG, "Process " + pid + " exited with result code " + returnValue + ".");
+                Log.w(GlobalConstants.LOG_TAG, "Process " + pid + " exited with result code " + returnValue + ".");
                 try {
                     mIn.close();
                 } catch (IOException e) {
