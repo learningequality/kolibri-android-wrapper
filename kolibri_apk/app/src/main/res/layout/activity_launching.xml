@@ -15,7 +15,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="90dp"
             android:text="retry"
-            android:onClick="startServer" />
+            android:onClick="restartServer" />
         
         <RelativeLayout
             android:id="@+id/StatusContainer"
@@ -28,7 +28,7 @@
                 android:id="@+id/ServerStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Starting server ... "
+                android:text="Starting Kolibri ... "
                 android:textColor="#005987"
                 android:layout_centerHorizontal="true"
                 android:textSize="30dp" />

@@ -40,6 +40,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.Button;
 import android.widget.Toast;
 
 import android.os.Build;
@@ -67,6 +68,7 @@ public class ScriptActivity extends Activity {
     private TextView ServerStatusTextView;
     private String start_command = "start";
     private boolean isServerRunning = false;
+    private Button retryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,8 @@ public class ScriptActivity extends Activity {
         spinner = (ProgressBar)findViewById(R.id.progressBar);
         webProgressBar = (ProgressBar)findViewById(R.id.webProgressBar);
         ServerStatusTextView = (TextView)findViewById(R.id.ServerStatus);
+        retryButton = (Button) findViewById(R.id.buttonStart);
+        retryButton.setVisibility(View.INVISIBLE);
 
         // install needed ?
         boolean installNeeded = isInstallNeeded();
@@ -141,6 +145,7 @@ public class ScriptActivity extends Activity {
                         spinner.setVisibility(View.INVISIBLE);
                         ServerStatusTextView.setText(mUtilities.exitCodeTranslate(server_status));
                         ServerStatusTextView.setTextColor(Color.parseColor("#FF9966"));
+                        retryButton.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -153,6 +158,13 @@ public class ScriptActivity extends Activity {
             wv.loadUrl("http://0.0.0.0:8080/", null);
             prefs.unregisterOnSharedPreferenceChangeListener(prefs_listener);
         }
+    }
+
+    public void restartServer(View view) {
+        retryButton.setVisibility(View.INVISIBLE);
+        spinner.setVisibility(View.VISIBLE);
+        ServerStatusTextView.setText("Retry to start Kolibri ... ");
+        runScriptService("start");
     }
 
     private void sendmsg(String key, String value) {
