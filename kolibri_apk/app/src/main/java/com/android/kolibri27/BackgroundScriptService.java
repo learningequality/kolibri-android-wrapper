@@ -77,9 +77,9 @@ public class BackgroundScriptService extends Service {
 
     // ------------------------------------------------------------------------------------------------------
 
-//	public BackgroundScriptService() {
-//		mBinder = new LocalBinder();
-//	}
+    // public BackgroundScriptService() {
+    //     mBinder = new LocalBinder();
+    // }
 
     // ------------------------------------------------------------------------------------------------------
 
@@ -180,6 +180,7 @@ public class BackgroundScriptService extends Service {
         ArrayList<String> args = new ArrayList<String>();
         args.add(scriptName);
         args.add(kolibri_command);
+        args.add("&"); // this is temporary. Delete this line if kolibri start can run in background.
 //        args.add("--foreground");
 
         File pythonBinary = new File(this.getFilesDir().getAbsolutePath() + "/python/bin/python");
@@ -191,6 +192,8 @@ public class BackgroundScriptService extends Service {
         environmentVariables.put("TEMP", Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + this.getPackageName() + "/extras/tmp");
         environmentVariables.put("PYTHONHOME", this.getFilesDir().getAbsolutePath() + "/python");
         environmentVariables.put("LD_LIBRARY_PATH", this.getFilesDir().getAbsolutePath() + "/python/lib" + ":" + this.getFilesDir().getAbsolutePath() + "/python/lib/python2.7/lib-dynload");
+        environmentVariables.put("PEX_ROOT", this.getFilesDir().getAbsolutePath()); // put .pex under /data/user/0/com.android.kolibri27/files
+        environmentVariables.put("KOLIBRI_HOME", this.getFilesDir().getAbsolutePath()); // put .kolibri under /data/user/0/com.android.kolibri27/files
 
         // launch script
         mProxy = new AndroidProxy(this, null, true);
@@ -207,9 +210,9 @@ public class BackgroundScriptService extends Service {
                 }
 
                 // hard force restart
-//				        if (!ScriptService.this.killMe) {
-//				        	startMyMain();				        	
-//				        }
+//                      if (!ScriptService.this.killMe) {
+//                          startMyMain();                          
+//                      }
 
             }
         }, script.getParent(), Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + this.getPackageName(), args, environmentVariables, pythonBinary);
