@@ -6,5 +6,5 @@ This repo consists of two parts -- Python build for Android; Kolibri Android app
 
 # TODOs:
 
-TODO-1: in `Dockerfile`
-TODO-2: in `prepare_gradle_build.sh`
+* TODO-1: in `Dockerfile`
+* TODO-2: in `prepare_gradle_build.sh`
