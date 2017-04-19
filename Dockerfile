@@ -12,5 +12,5 @@ COPY /python-android/python_extras_27.zip kolibri_apk/app/src/main/res/raw/
 
 # build the apk via Gradle-wrapper
 WORKDIR /kolibri_apk
-RUN prepare_gradle_build.sh
+RUN ../prepare_gradle_build.sh
 RUN ./gradlew assembleDebug
