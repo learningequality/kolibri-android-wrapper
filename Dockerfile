@@ -7,8 +7,8 @@ RUN build_python.sh
 COPY /python-android/python_27.zip kolibri_apk/app/src/main/res/raw/
 COPY /python-android/python_extras_27.zip kolibri_apk/app/src/main/res/raw/
 # TODO:
-# Also need to copy the kolibri.pex to kolibri_apk/app/src/main/res/raw/
-# but we don't know where to fetch kolibri.pex yet.
+# This is a temporary solution, fetching the kolibri.pex file from Jamie's Slack file share.
+ADD https://files.slack.com/files-pri/T0KT5DC58-F4ZTYPAT0/download/kolibri-v0.3.1-beta3.pex kolibri_apk/app/src/main/res/raw/kolibri.pex
 
 # build the apk via Gradle-wrapper
 WORKDIR /kolibri_apk
