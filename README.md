@@ -7,3 +7,10 @@ This repo consists of two parts -- Python build for Android; Kolibri Android app
 # TODOs:
 
 * TODO-1: in `Dockerfile`
+
+
+# APK:
+
+To generate debuging-APK, set `IS_REMOTE_DEBUGGING` and `IS_KOLIBRI_DEBUGGING` in `kolibri-android-wrapper/kolibri_apk/app/src/main/java/com/android/kolibri27/config/GlobalConstants.java` to `true`.
+
+To generate releasing-APK, set `IS_REMOTE_DEBUGGING` and `IS_KOLIBRI_DEBUGGING` in `kolibri-android-wrapper/kolibri_apk/app/src/main/java/com/android/kolibri27/config/GlobalConstants.java` to `false`.
