@@ -1,12 +1,11 @@
 # ubuntu 14 should come with gcc-4.8, if not, and the build failed, can try install gcc-4.8
-from ubuntu:14.04.5
-
-# get the repo
-RUN git clone https://github.com/66eli77/python-android.git
+FROM ubuntu:14.04.5
 
 
 # ** generate python_27.zip and python_extras_27.zip **
 
+# get python-android repo
+RUN git clone https://github.com/66eli77/python-android.git
 # install libs
 RUN apt-get update
 RUN sudo apt-get install build-essential bison flex autoconf automake autotools-dev quilt libcurl3 curl openssh-server ant mercurial filezilla pure-ftpd dpatch texinfo libncurses5-dev libgmp3-dev libmpfr-dev gawk patchutils binutils-dev zlib1g-dev
@@ -66,6 +65,8 @@ COPY /python-android/python_extras_27.zip kolibri_apk/app/src/main/res/raw/
 ADD https://files.slack.com/files-pri/T0KT5DC58-F4ZTYPAT0/download/kolibri-v0.3.1-beta3.pex kolibri_apk/app/src/main/res/raw/kolibri.pex
 # install JDK 8
 RUN sudo apt-get install openjdk-8-jdk
+# Copy kolibri_apk into the container
+ADD /kolibri_apk/. /kolibri_apk
 # modify gradle.properties file to point to the newly installed JDK 8
 WORKDIR /kolibri_apk
 RUN sed -i '1s/.*/org.gradle.java.home=/usr/lib/jvm/java-8-openjdk-amd64/' /kolibri_apk/gradle.properties
