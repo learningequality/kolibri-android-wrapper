@@ -1,8 +1,7 @@
 # kolibri-android-wrapper
 
-To generate the APK, run `docker build .`, or `sudo docker build .`, once finished, a bebuging-apk will be created at `/kolibri_apk/app/build/outputs/apk/app-debug.apk` inside the container.
+To generate the APK, run the following commands:
 
-Run the following commands to get the APK from your docker container to host.
 ```
 sudo docker build -t kolibriandroid .
 sudo docker cp `sudo docker create kolibriandroid`:/kolibri_apk/app/build/outputs/apk/app-debug.apk .
