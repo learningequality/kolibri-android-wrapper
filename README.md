@@ -16,6 +16,8 @@ The Dockerfile will put all 3 of them, `python_27.zip`, `python_extras_27.zip` a
 
 * TODO-1: in `Dockerfile`. Fetch python build and `kolibri.pex` from a better place.
 
+# Recommended IDE
+[Android Studio](https://developer.android.com/studio/index.html)
 
 # APK:
 
