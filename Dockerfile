@@ -14,11 +14,9 @@ RUN tar -xvzf android-sdk_r24.4.1-linux.tgz
 
 # TODO:
 # This is a temporary solution to fetch python build and kolibri.pex
-# fetching python build from GoogleDrive(for some reason, it also downloads some crap like 0B5xDzmtBJIQlOHJfM1J3bW9OeXc that need to be removed)
-ADD https://doc-0g-2c-docs.googleusercontent.com/docs/securesc/lh154k315dbgtv334js9quoupas3cnps/asmk1vmbb1ecsa77n3oen9aetmij60m2/1493244000000/05796788971138871480/05796788971138871480/0B5xDzmtBJIQlOHJfM1J3bW9OeXc?h=10311220666211206215&e=download /kolibri_apk/app/src/main/res/raw/
-RUN rm /kolibri_apk/app/src/main/res/raw/0B5xDzmtBJIQlOHJfM1J3bW9OeXc
-ADD https://doc-0g-2c-docs.googleusercontent.com/docs/securesc/lh154k315dbgtv334js9quoupas3cnps/07727crmf6djr0m1jd8fkq2iv2rk6grs/1493244000000/05796788971138871480/05796788971138871480/0B5xDzmtBJIQlVXYzVHFUMVVWeVE?h=10311220666211206215&e=download /kolibri_apk/app/src/main/res/raw/
-RUN rm /kolibri_apk/app/src/main/res/raw/0B5xDzmtBJIQlVXYzVHFUMVVWeVE
+# fetching python build
+ADD https://github.com/learningequality/python-android/releases/download/1/python_27.zip /kolibri_apk/app/src/main/res/raw/
+ADD https://github.com/learningequality/python-android/releases/download/1/python_extras_27.zip /kolibri_apk/app/src/main/res/raw/
 # fetching the kolibri.pex file from Jamie's Slack file share.
 ADD https://files.slack.com/files-pri/T0KT5DC58-F4ZTYPAT0/download/kolibri-v0.3.1-beta3.pex \
     kolibri_apk/app/src/main/res/raw/kolibri.pex
