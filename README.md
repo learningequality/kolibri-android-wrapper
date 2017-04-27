@@ -1,5 +1,9 @@
 # kolibri-android-wrapper
 
+To generate the APK, run `docker build`. Once finished, a bebuging-apk will be created at `/kolibri_apk/app/build/outputs/apk/app-debug.apk` inside the container.
+
+---
+
 This wrapper utilizes [SL4A](https://github.com/damonkohler/sl4a) to run python inside Android in order to run Kolibri(a Django server). The wrapper has a simple native Android UI to start the python environment and run Kolibri. You can use Android Studio logcat to debug the python process.
 
 We need to cross-compile python for android and we have [a repo python-android for this](https://github.com/learningequality/python-android). It will generate two zip files `python_27.zip`and `python_extras_27.zip` we need in this repo.
