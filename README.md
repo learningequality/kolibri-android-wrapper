@@ -26,7 +26,7 @@ Before import the project `kolibri_apk` in Android Studio, run the following com
 ```
 wget https://github.com/learningequality/python-android/releases/download/1/python_27.zip -P kolibri_apk/app/src/main/res/raw
 wget https://github.com/learningequality/python-android/releases/download/1/python_extras_27.zip -P kolibri_apk/app/src/main/res/raw
-wget https://files.slack.com/files-pri/T0KT5DC58-F4ZTYPAT0/download/kolibri-v0.3.1-beta3.pex -P kolibri_apk/app/src/main/res/raw
+wget https://files.slack.com/files-pri/T0KT5DC58-F4ZTYPAT0/download/kolibri-v0.3.1-beta3.pex -P kolibri_apk/app/src/main/res/raw/kolibri.pex
 ``` 
 
 # APK:
