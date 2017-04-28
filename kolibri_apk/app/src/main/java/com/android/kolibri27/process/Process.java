@@ -169,9 +169,7 @@ public class Process {
 
         new Thread(new Runnable() {
             public void run() {
-                Log.e(GlobalConstants.LOG_TAG, "WWWWTTTFFF--111"); // cannot get the python exit code. why !?
                 returnValue = Exec.waitFor(mPid.get());
-                Log.e(GlobalConstants.LOG_TAG, "WWWWTTTFFF--222");
                 mEndTime = System.currentTimeMillis();
                 int pid = mPid.getAndSet(PID_INIT_VALUE);
                 //pass python exit code to main activity via singlton GlobalValues(sharepreference)
