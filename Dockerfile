@@ -17,9 +17,12 @@ RUN tar -xvzf android-sdk_r24.4.1-linux.tgz
 # fetching python build
 ADD https://github.com/learningequality/python-android/releases/download/1/python_27.zip /kolibri_apk/app/src/main/res/raw/
 ADD https://github.com/learningequality/python-android/releases/download/1/python_extras_27.zip /kolibri_apk/app/src/main/res/raw/
-# fetching the kolibri.pex file from Jamie's Slack file share.
-ADD https://github.com/learningequality/kolibri-android-wrapper/releases/download/0.01/kolibri.pex \
-    kolibri_apk/app/src/main/res/raw/kolibri.pex
+
+COPY *.pex .
+RUN PEX_PATH=$(ls *.pex | awk "{ print $1 }")
+RUN PEX_VERSION_STRING="${PEX_PATH%.*}"
+COPY $PEX_PATH kolibri_apk/app/src/main/res/raw/kolibri.pex
+
 # install JDK 8
 RUN sudo apt-add-repository ppa:webupd8team/java
 RUN sudo apt-get update
@@ -37,3 +40,5 @@ RUN printf "ndk.dir=/android-ndk-r13b\nsdk.dir=/android-sdk-linux" > local.prope
 RUN echo y | /android-sdk-linux/tools/android update sdk --all --filter platform-tools,build-tools-25.0.0,android-22 --no-ui --force
 # generate a debugging APK
 RUN ./gradlew assembleDebug
+
+RUN cp /kolibri_apk/app/build/outputs/apk/app-debug.apk ${PEX_VERSION_STRING}.apk
