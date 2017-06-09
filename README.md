@@ -1,6 +1,11 @@
 # kolibri-android-wrapper
 
-To generate the APK, run `docker build .`, or `sudo docker build .`, once finished, a bebuging-apk will be created at `/kolibri_apk/app/build/outputs/apk/app-debug.apk` inside the container.
+To generate the APK, run the following commands:
+
+```
+sudo docker build -t kolibriandroid .
+sudo docker cp `sudo docker create kolibriandroid`:/kolibri_apk/app/build/outputs/apk/app-debug.apk .
+```
 
 ---
 
@@ -16,6 +21,13 @@ The Dockerfile will put all 3 of them, `python_27.zip`, `python_extras_27.zip` a
 
 * TODO-1: in `Dockerfile`. Fetch python build and `kolibri.pex` from a better place.
 
+# Edit the app in [Android Studio](https://developer.android.com/studio/index.html)
+Before import the project `kolibri_apk` in Android Studio, run the following commands from the root dir(`/kolibri-android-wrapper` folder) to put the python builds and kolibri.pex in proper location.
+```
+wget https://github.com/learningequality/python-android/releases/download/1/python_27.zip -P kolibri_apk/app/src/main/res/raw
+wget https://github.com/learningequality/python-android/releases/download/1/python_extras_27.zip -P kolibri_apk/app/src/main/res/raw
+wget https://files.slack.com/files-pri/T0KT5DC58-F4ZTYPAT0/download/kolibri-v0.3.1-beta3.pex -P kolibri_apk/app/src/main/res/raw/kolibri.pex
+``` 
 
 # APK:
 
