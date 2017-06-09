@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+import java.util.TimeZone;
 
 public class BackgroundScriptService extends Service {
     private final CountDownLatch mLatch = new CountDownLatch(1);
@@ -180,8 +181,7 @@ public class BackgroundScriptService extends Service {
         ArrayList<String> args = new ArrayList<String>();
         args.add(scriptName);
         args.add(kolibri_command);
-        args.add("&"); // this is temporary. Delete this line if kolibri start can run in background.
-//        args.add("--foreground");
+        args.add("--debug");
 
         File pythonBinary = new File(this.getFilesDir().getAbsolutePath() + "/python/bin/python");
 
@@ -194,6 +194,7 @@ public class BackgroundScriptService extends Service {
         environmentVariables.put("LD_LIBRARY_PATH", this.getFilesDir().getAbsolutePath() + "/python/lib" + ":" + this.getFilesDir().getAbsolutePath() + "/python/lib/python2.7/lib-dynload");
         environmentVariables.put("PEX_ROOT", this.getFilesDir().getAbsolutePath()); // put .pex under /data/user/0/com.android.kolibri27/files
         environmentVariables.put("KOLIBRI_HOME", this.getFilesDir().getAbsolutePath()); // put .kolibri under /data/user/0/com.android.kolibri27/files
+        environmentVariables.put("TZ", TimeZone.getDefault().getID());
 
         // launch script
         mProxy = new AndroidProxy(this, null, true);

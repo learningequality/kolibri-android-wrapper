@@ -22,6 +22,9 @@
 
 package com.android.kolibri27.process;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.android.kolibri27.GlobalValues;
@@ -36,6 +39,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -123,6 +129,24 @@ public class Process {
         return mIn;
     }
 
+    private boolean isServerReachable() {
+        try {
+            URL urlServer = new URL("http://127.0.0.1:8080/");
+            HttpURLConnection urlConn = (HttpURLConnection) urlServer.openConnection();
+            urlConn.setConnectTimeout(3000); //<- 3Seconds Timeout
+            urlConn.connect();
+            if (urlConn.getResponseCode() == 200) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (MalformedURLException e1) {
+            return false;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
     public void start(final Runnable shutdownHook) {
         if (isAlive()) {
             throw new RuntimeException("Attempted to start process that is already running.");
@@ -170,7 +194,20 @@ public class Process {
         new Thread(new Runnable() {
             public void run() {
                 Log.e(GlobalConstants.LOG_TAG, "WWWWTTTFFF--111"); // cannot get the python exit code. why !?
-                returnValue = Exec.waitFor(mPid.get());
+//                returnValue = Exec.waitFor(mPid.get());
+                // for now, just assume it returned immediately and successfully... we'll need to figure out how not to have the above line hang
+                // we still don't want the webview to pop up immediately, so we need to loop until the server URL is available
+                while (true) {
+                    if (isServerReachable()) {
+                        break;
+                    }
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+
+                    }
+                }
+                returnValue = 0;
                 Log.e(GlobalConstants.LOG_TAG, "WWWWTTTFFF--222");
                 mEndTime = System.currentTimeMillis();
                 int pid = mPid.getAndSet(PID_INIT_VALUE);
@@ -178,6 +215,7 @@ public class Process {
                 String kolibri_command = mArguments.get(1);
                 if(!kolibri_command.equals("stop")){ //when "stop" command is sent, main activity could have been killed, therefore GloabalValue is gone too.
                     GlobalValues gv = GlobalValues.getInstance();
+
                     gv.setPythonExitCode(returnValue, kolibri_command);
                 }
                 Log.w(GlobalConstants.LOG_TAG, "Process " + pid + " exited with result code " + returnValue + ".");

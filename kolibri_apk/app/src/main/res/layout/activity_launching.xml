@@ -28,7 +28,7 @@
                 android:id="@+id/ServerStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Starting Kolibri ... "
+                android:text="Starting Kolibri... "
                 android:textColor="#005987"
                 android:layout_centerHorizontal="true"
                 android:textSize="30dp" />

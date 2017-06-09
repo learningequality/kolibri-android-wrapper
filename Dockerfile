@@ -18,7 +18,7 @@ RUN tar -xvzf android-sdk_r24.4.1-linux.tgz
 ADD https://github.com/learningequality/python-android/releases/download/1/python_27.zip /kolibri_apk/app/src/main/res/raw/
 ADD https://github.com/learningequality/python-android/releases/download/1/python_extras_27.zip /kolibri_apk/app/src/main/res/raw/
 # fetching the kolibri.pex file from Jamie's Slack file share.
-ADD https://files.slack.com/files-pri/T0KT5DC58-F4ZTYPAT0/download/kolibri-v0.3.1-beta3.pex \
+ADD https://github.com/learningequality/kolibri-android-wrapper/releases/download/0.01/kolibri.pex \
     kolibri_apk/app/src/main/res/raw/kolibri.pex
 # install JDK 8
 RUN sudo apt-add-repository ppa:webupd8team/java
