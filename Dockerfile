@@ -19,8 +19,8 @@ ADD https://github.com/learningequality/python-android/releases/download/1/pytho
 ADD https://github.com/learningequality/python-android/releases/download/1/python_extras_27.zip /kolibri_apk/app/src/main/res/raw/
 
 COPY *.pex .
-RUN export PEX_PATH=$(ls *.pex | awk "{ print $1 }")
-RUN export PEX_VERSION_STRING="${PEX_PATH%.*}"
+ENV PEX_PATH=$(ls *.pex | awk "{ print $1 }")
+ENV PEX_VERSION_STRING="${PEX_PATH%.*}"
 COPY $PEX_PATH kolibri_apk/app/src/main/res/raw/kolibri.pex
 
 # install JDK 8
