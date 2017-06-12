@@ -37,4 +37,4 @@ RUN echo y | /android-sdk-linux/tools/android update sdk --all --filter platform
 # generate a debugging APK
 RUN ./gradlew assembleDebug
 
-RUN export VERSION=$(python /kolibri_apk/app/src/main/res/raw/kolibri.pex --version); cp /kolibri_apk/app/build/outputs/apk/app-debug.apk /${VERSION}.apk
+RUN export VERSION=$(python /kolibri_apk/app/src/main/res/raw/kolibri.pex --version); cp /kolibri_apk/app/build/outputs/apk/app-debug.apk /kolibri-${VERSION}.apk
