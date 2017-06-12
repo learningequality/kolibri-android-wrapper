@@ -1,9 +1,8 @@
 # ubuntu 14 should come with gcc-4.8, if not, and the build failed, can try install gcc-4.8
 FROM ubuntu:14.04.5
 
-# install required ubuntu packages
-RUN apt-get update
-RUN sudo apt-get install -y wget unzip software-properties-common
+# # install required ubuntu packages
+RUN apt-get update && sudo apt-get install -y wget unzip software-properties-common python
 
 # get the right version of NDK and SDK
 RUN wget https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip
@@ -18,10 +17,7 @@ RUN tar -xvzf android-sdk_r24.4.1-linux.tgz
 ADD https://github.com/learningequality/python-android/releases/download/1/python_27.zip /kolibri_apk/app/src/main/res/raw/
 ADD https://github.com/learningequality/python-android/releases/download/1/python_extras_27.zip /kolibri_apk/app/src/main/res/raw/
 
-COPY *.pex .
-ENV PEX_PATH=$(ls *.pex | awk "{ print $1 }")
-ENV PEX_VERSION_STRING="${PEX_PATH%.*}"
-COPY $PEX_PATH kolibri_apk/app/src/main/res/raw/kolibri.pex
+COPY kolibri.pex kolibri_apk/app/src/main/res/raw/kolibri.pex
 
 # install JDK 8
 RUN sudo apt-add-repository ppa:webupd8team/java
@@ -41,4 +37,4 @@ RUN echo y | /android-sdk-linux/tools/android update sdk --all --filter platform
 # generate a debugging APK
 RUN ./gradlew assembleDebug
 
-RUN cp /kolibri_apk/app/build/outputs/apk/app-debug.apk ${PEX_VERSION_STRING}.apk
+RUN export VERSION=$(python /kolibri_apk/app/src/main/res/raw/kolibri.pex --version); cp /kolibri_apk/app/build/outputs/apk/app-debug.apk /${VERSION}.apk
