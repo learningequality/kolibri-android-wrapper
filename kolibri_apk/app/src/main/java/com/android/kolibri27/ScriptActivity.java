@@ -29,6 +29,7 @@ import com.googlecode.android_scripting.FileUtils;
 import java.io.File;
 import java.io.InputStream;
 
+import android.content.pm.ActivityInfo;
 import android.util.Log;
 
 import android.app.Activity;
@@ -73,7 +74,8 @@ public class ScriptActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // Enable screen rotation
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         mUtilities = new KolibriUtilities();
         GlobalValues.initialize(this);
         gv = GlobalValues.getInstance();
