@@ -18,7 +18,7 @@
 
         <activity
             android:name="com.android.kolibri27.ScriptActivity"
-            android:configChanges="keyboardHidden|orientation"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
 
             <intent-filter>
